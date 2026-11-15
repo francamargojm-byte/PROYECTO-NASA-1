@@ -1,0 +1,59 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background: #101820;
+  color: #f4f4f4;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.panel {
+  width: 400px;
+  padding: 40px;
+  background: rgba(16, 24, 32, 0.92);
+  border-right: 1px solid rgba(255,255,255,0.1);
+  box-sizing: border-box;
+}
+
+.panel h1 {
+  margin-top: 0;
+  font-size: 1.6rem;
+}
+
+#info-ruta {
+  margin-top: 18px;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+#map {
+  flex: 1;
+  height: 100vh;
+  min-height: 500px;
+  background: #000;
+  overflow: hidden;
+}
+
+#map .leaflet-image-layer {
+  max-width: none;
+}
+
+.leaflet-container {
+  background: #000;
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: #1b1f24;
+  color: #fff;
+}

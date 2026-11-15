@@ -1,0 +1,33 @@
+{
+  "rutas": [
+    {
+      "id": "ruta-1",
+      "nombre": "Recorrido principal",
+      "descripcion": "Ruta de prueba con puntos sobre la imagen.",
+      "color": "#00c2ff",
+      "coordenadas": [
+        [5, 15],
+        [18, 22],
+        [28, 40],
+        [42, 55],
+        [58, 65],
+        [70, 80],
+        [88, 92]
+      ]
+    },
+    {
+      "id": "ruta-2",
+      "nombre": "Ruta secundaria",
+      "descripcion": "Otra ruta para mostrar diferentes recorridos.",
+      "color": "#ffb703",
+      "coordenadas": [
+        [12, 8],
+        [20, 18],
+        [30, 28],
+        [45, 35],
+        [62, 48],
+        [76, 60]
+      ]
+    }
+  ]
+}
