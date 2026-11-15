@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en  ">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#080c16">
-    <title>Marte 3D | Exploración Jezero</title>
+    <title>Mars 3D | Jezero Exploration</title>
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX" crossorigin="anonymous">
     <link rel="stylesheet" href="jerazo.css">
     <script type="importmap">
         {
@@ -18,51 +19,75 @@
     <script type="module" src="jerazo.js"></script>
 </head>
 <body>
-    <main class="experience">
+    <main id="top" class="experience">
         <div id="scene-container" class="scene" aria-label="Globo 3D interactivo de Marte">
             <div class="scene-vignette" aria-hidden="true"></div>
-            <div id="loading" class="loading" role="status">Preparando la simulación 3D...</div>
+            <div id="loading" class="loading" role="status">Loading Simulation 3D...</div>
         </div>
 
-        <header class="topbar">
-            <a class="brand" href="#" aria-label="Marte 3D, inicio">
-                <span class="brand-mark" aria-hidden="true"><span></span></span>
-                <span class="brand-name">ORBITAL<span> / EXPLORACIÓN</span></span>
-            </a>
-            <div class="mission-status"><span class="status-dot"></span> MISIÓN ACTIVA</div>
-        </header>
-
+      
         <section class="mission-card" aria-labelledby="mission-title">
-            <p class="eyebrow"><span class="eyebrow-line"></span> PLANETA ROJO · 04</p>
-            <h1 id="mission-title">Marte<span class="title-period">.</span></h1>
-            <p class="mission-description">Un mundo de extremos. Explora el terreno marciano y descubre el lugar donde alguna vez fluyó agua.</p>
+            <h1 id="mission-title">Mars<span class="title-period">.</span></h1>
+            <p class="mission-description">Survival guide for astronauts</p>
 
             <div class="card-divider"></div>
             <div class="location-heading">
                 <span class="location-icon" aria-hidden="true">⌖</span>
                 <div>
-                    <p class="eyebrow location-label">PUNTO DE INTERÉS</p>
-                    <h2>Cráter Jezero</h2>
+                    <p class="eyebrow location-label">POINT OF INTEREST</p>
+                    <h2>Jezero Crater</h2>
                 </div>
             </div>
-            <p class="location-description">Antiguo delta fluvial · Lugar de aterrizaje de Perseverance</p>
+            <p class="location-description">Ancient fluvial delta · Perseverance landing site</p>
 
             <div class="card-divider lower-divider"></div>
             <div class="data-row">
-                <div><span class="data-value">18.4°</span><span class="data-label">LATITUD</span></div>
+                <div><span class="data-value">18.4°</span><span class="data-label">LATITUDE</span></div>
                 <span class="data-separator"></span>
-                <div><span class="data-value">77.7°</span><span class="data-label">LONGITUD</span></div>
+                <div><span class="data-value">77.7°</span><span class="data-label">LONGITUDE</span></div>
             </div>
         </section>
 
-        <div class="coordinates" aria-hidden="true">
-            <span>HEMISFERIO NORTE</span>
-            <span class="coordinates-rule"></span>
-            <span>18.4° N &nbsp; 77.7° E</span>
-        </div>
+        <aside id="jezero-card" class="jezero-card" aria-labelledby="jezero-card-title" hidden>
+            <div class="jezero-card-heading">
+                <div>
+                    <p class="eyebrow">POINT OF INTEREST</p>
+                    <h2 id="jezero-card-title">Jezero Crater</h2>
+                </div>
+                <button id="close-jezero-card" class="card-close" type="button" aria-label="Close card">×</button>
+            </div>
+            <img class="jezero-image" src="imagenes%20jerazo/jerazo.png" alt="Detailed view of the Jezero crater on Mars, showing the crater rim, floor, and western delta.">
+            <button id="jezero-info-toggle" class="info-toggle" type="button" aria-expanded="false" aria-controls="jezero-info">
+                <span>Information</span><span class="info-toggle-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="route-buttons" aria-label="Route buttons for Jezero Crater exploration">
+                <button class="route-button" type="button" data-route="Region Jezero Mission" data-image="imagenes%20jerazo/ruta%201.jpeg"><h6>Region Jezero Mission</h6></button>
+                <button class="route-button" type="button" data-route="Northwest Region Jezero Mission" data-image="imagenes%20jerazo/ruta%202.jpeg"><h6>Northwest Region Jezero Mission</h6></button>
+                <button class="route-button" type="button" data-route="Western Delta Deposit Mission" data-image="imagenes%20jerazo/ruta%203.jpeg"><h6>Western Delta Deposit Mission</h6></button>
+                <button class="route-button" type="button" data-route="Center Jezero Crater Mission" data-image="imagenes%20jerazo/ruta%204.jpeg"><h6>Center Jezero Crater Mission</h6></button>
+            </div>
+            <div id="jezero-info" class="jezero-info" hidden>
+                <p><h5>Features of the Jezero Crater:</h5>
+                  <h6>With a diameter of approximately 45 km, the crater floor lies at an elevation of -2,600 m relative to the surface of Mars and features various types of terrain:
+Crater rim: This consists of elevated features that define the circular structure. It is characterized by steep slopes and significant changes in elevation, making it a difficult area to traverse.
+Crater floor: This is the interior region, situated at a lower altitude than the surrounding terrain. It contains relatively flat areas, alongside irregularities, sedimentary deposits, and rocky outcrops.
+Western delta: This is one of the primary geomorphological features of Jezero. It was formed by the accumulation of sediments transported by ancient watercourses. It exhibits stepped surfaces, stratified deposits, and variations in elevation.
+Fluvial channels: Ancient inflow and outflow channels have been identified, which once connected the crater to the surrounding regions. These structures provide evidence of the flow of liquid water on Mars in the past.
+Slopes and elevation changes: The terrain features variations in incline that must be taken into account when assessing vehicle mobility and the safety of movement. Steep slopes and rocky surfaces represent potential obstacles.</h6></p>
+            </div>
+        </aside>
+
+        <dialog id="route-dialog" class="route-dialog" aria-labelledby="route-dialog-title">
+            <div class="route-dialog-heading">
+<h2 id="route-dialog-title">Ruta Alt 1</h2>
+<button id="close-route-dialog" class="card-close" type="button" aria-label="Cerrar ventana de ruta">×</button>
+            </div>
+            <img id="route-dialog-image" class="route-dialog-image" src="" alt="">
+            <p class="route-dialog-info">Hi World!</p>
+        </dialog>
 
         <section class="viewer-controls" aria-label="Controles del globo">
-            <p class="controls-hint"><span class="mouse-icon" aria-hidden="true"></span> ARRASTRA PARA EXPLORAR</p>
+          
             <div class="control-bar">
                 <button id="zoom-out" class="icon-button" type="button" aria-label="Alejar" title="Alejar">
                     <span aria-hidden="true">−</span>
@@ -72,18 +97,187 @@
                     <span aria-hidden="true">+</span>
                 </button>
                 <span class="control-divider wide-divider"></span>
-                <button id="spin-toggle" class="text-button" type="button" aria-pressed="true">
-                    <span class="play-icon" aria-hidden="true"></span><span id="spin-label">PAUSAR GIRO</span>
+                <button id="jezero-focus" class="text-button jezero-focus-button" type="button" aria-label="Acercar a Jezero y ver la imagen">
+                    <span class="location-button-icon" aria-hidden="true">⌖</span><span>JEZERO</span>
                 </button>
                 <span class="control-divider wide-divider"></span>
-                <button id="reset-view" class="icon-button reset-button" type="button" aria-label="Restablecer vista" title="Restablecer vista">
+                <button id="spin-toggle" class="text-button" type="button" aria-pressed="true">
+                    <span class="play-icon" aria-hidden="true"></span><span id="spin-label">STOP TURN</span>
+                </button>
+                <span class="control-divider wide-divider"></span>
+                <button id="reset-view" class="icon-button reset-button" type="button" aria-label="Reset view" title="Reset view">
                     <span aria-hidden="true">↺</span>
                 </button>
             </div>
         </section>
 
-        <footer class="footer-note"><span class="footer-star" aria-hidden="true">✳</span> SIMULACIÓN INTERACTIVA <span class="footer-divider">·</span> TERRENO DE JEZERO</footer>
+        <footer class="footer-note"><span class="footer-star" aria-hidden="true">✳</span> INTERACTIVE SIMULATION <span class="footer-divider">·</span> JEZERO TERRAIN</footer>
+        <div id="considerations-menu" class="dropdown considerations-menu">
+            <button id="considerations-toggle" class="considerations-toggle" type="button" aria-expanded="false" aria-controls="considerations-dropdown">
+                <h6>CONSIDERATIONS</h6><span class="dropdown-chevron" aria-hidden="true">⌄</span>
+            </button>
+            <ul id="considerations-dropdown" class="dropdown-menu considerations-dropdown" hidden>
+                <li><a class="dropdown-item" href="#physical-health">PHYSICAL HEALTH</a></li>
+                <li><a class="dropdown-item" href="#soil-chemistry">SOIL CHEMISTRY</a></li>
+                <li><a class="dropdown-item" href="#sampling-methodology">SAMPLING METHODOLOGY</a></li>
+                <li><a class="dropdown-item" href="#radiation">RADIATION</a></li>
+                <li><a class="dropdown-item" href="#mental-health">MENTAL HEALTH</a></li>
+            </ul>
+        </div>
         <div class="edge-glow" aria-hidden="true"></div>
     </main>
+    <section id="considerations" class="considerations" aria-labelledby="considerations-title">
+        <div class="considerations-content">
+            <p class="eyebrow">MISSION NOTES</p>
+            <h2 id="considerations-title">CONSIDERATIONS</h2>
+            <div class="considerations-grid">
+                <article id="physical-health" class="consideration-item">
+                    <h3>PHYSICAL HEALTH</h3>
+                    <p class="consideration-intro">The following health issues must be considered as a baseline:</p>
+                    <div class="health-topics">
+                        <section class="health-topic">
+                            <h4>Muscle mass loss and bone weakness resulting from reduced gravity:</h4>
+                            <p>The body no longer supports its usual weight, causing muscle atrophy and bone demineralization. A solution could be practicing mandatory daily resistance and impact exercise routines.</p>
+                        </section>
+                        <section class="health-topic">
+                            <h4>Exposure to space radiation:</h4>
+                            <p>Exposure to galactic cosmic radiation and solar particle events damages cellular DNA, increasing the risk of cancer. One solution is rover shielding.</p>
+                        </section>
+                        <section class="health-topic">
+                            <h4>Martian dust toxicity:</h4>
+                            <p>The dust contains perchlorates and silicates that affect the thyroid gland and can cause fibrosis or lung damage. One solution is the use of suitports (docked suits) and ventilation filters.</p>
+                        </section>
+                        <section class="health-topic">
+                            <h4>Cardiovascular and fluid alterations:</h4>
+                            <p>Without gravity, fluids redistribute toward the upper body, increasing intracranial pressure. One solution is the use of lower body negative pressure (LBNP) trousers to draw fluids down toward the legs.</p>
+                        </section>
+                        <section class="health-topic">
+                            <h4>Physical strain and trauma:</h4>
+                            <p>Constantly working inside a pressurized suit generates extreme muscle fatigue. One solution is designing suits with low-friction joints.</p>
+                        </section>
+                        <section class="health-topic">
+                            <h4>Circadian rhythm disruption:</h4>
+                            <p>The accumulated daily lag relative to Earth's biological clock desynchronizes melatonin and cortisol, causing chronic fatigue, cognitive impairment, and a weakened immune system. One solution is circadian LED lighting inside the rover.</p>
+                        </section>
+                        <section class="health-topic">
+                            <h4>Nutrition:</h4>
+                            <p>The diet will rely on thermostabilized foods in which certain vitamins degrade over time. One solution is personalized nutritional supplementation.</p>
+                        </section>
+                    </div>
+                </article>
+                <article id="soil-chemistry" class="consideration-item">
+                    <h3>SOIL CHEMISTRY</h3>
+                    <p class="consideration-intro">On-foot traverses will be pursued to enable access to narrow zones and allow for millimetric observation of microfissures, rocky outcrops, and delta walls.</p>
+                    <p class="consideration-intro">Soil chemistry varies between volcanic activity and liquid water episodes from millions of years ago. The following can be found:</p>
+                    <div class="soil-topics">
+                        <section class="health-topic">
+                            <h4>Olivine and Pyroxenes:</h4>
+                            <p>Their abundance indicates igneous rocks with minimal water alteration.</p>
+                        </section>
+                        <section class="health-topic">
+                            <h4>Clays:</h4>
+                            <p>Formed when liquid water chemically alters silicates over extended periods; they trap and preserve organic matter or microstructures.</p>
+                        </section>
+                        <section class="health-topic">
+                            <h4>Carbonates:</h4>
+                            <p>Acting as "preserving" agents, they record the chemistry of ancient lakes and preserve biosignatures (similar to fossilization).</p>
+                        </section>
+                        <section class="health-topic">
+                            <h4>Sulfates:</h4>
+                            <p>Mineral salts that precipitate when sulfur-rich bodies of water evaporate, indicating climatic shifts toward arid or saline environments.</p>
+                        </section>
+                        <section class="health-topic">
+                            <h4>Perchlorates:</h4>
+                            <p>Oxidizing and toxic salts dispersed throughout the surface dust that help identify the planet's redox chemistry.</p>
+                        </section>
+                        <section class="health-topic">
+                            <h4>Traces of organic carbon:</h4>
+                            <p>Aid in the search for evidence of past life.</p>
+                        </section>
+                    </div>
+                </article>
+                <article id="sampling-methodology" class="consideration-item">
+                    <h3>SAMPLING METHODOLOGY</h3>
+                    <p class="consideration-intro">Contamination or alteration of the chemical integrity of the sample is avoided in the following manner:</p>
+                    <div class="health-topics">
+                        <section class="health-topic">
+                            <h4>Core extraction:</h4>
+                            <p>Use of a drill with a diamond or carbide bit to extract intact rock cylinders while preserving the mineral microstructure.</p>
+                        </section>
+                        <section class="health-topic">
+                            <h4>Surface regolith collection:</h4>
+                            <p>Sterile trowels and brushes are used to capture fine dust, hydrated salt crusts, and sediments.</p>
+                        </section>
+                        <section class="health-topic">
+                            <h4>Hermetic sealing and storage:</h4>
+                            <p>Samples are immediately placed into airtight storage tubes to prevent oxidation by the Martian atmosphere and the loss of volatile compounds or trapped moisture.</p>
+                        </section>
+                        <section class="health-topic">
+                            <h4>Cross-contamination chain:</h4>
+                            <p>The astronaut uses tools with interchangeable or plasma/heat-sterilizable tips between each sampling site to avoid biasing biosignature analyses.</p>
+                        </section>
+                    </div>
+                </article>
+                <article id="radiation" class="consideration-item">
+                    <h3>RADIATION</h3>
+                    <p class="consideration-intro">Outside Earth's magnetic field, prolonged exposure to radiation is incompatible with human life, and Mars's magnetic field is much weaker than Earth's.</p>
+                    <p class="consideration-intro">We highlight the danger of galactic cosmic rays, which are high-energy particles capable of penetrating several meters into the Martian soil. We consider that solar energetic particles vary across different orders of magnitude:</p>
+                    <div class="health-topics">
+                        <section class="health-topic">
+                            <h4>Mild events:</h4>
+                            <p>They lose almost all of their energy upon reaching the surface.</p>
+                        </section>
+                        <section class="health-topic">
+                            <h4>Hard events:</h4>
+                            <p>They produce a substantial flux on the Martian surface.</p>
+                        </section>
+                    </div>
+                    <p class="consideration-intro">Special use will be made of pressurized vehicles that allow explorers to remain inside for weeks without needing to wear any spacesuits, specifically built for long-duration missions. These must be characterized by:</p>
+                    <div class="health-topics">
+                        <section class="health-topic">
+                            <h4>Autonomy:</h4>
+                            <p>14 to 30 days with a crew of 2 to 4 passengers.</p>
+                        </section>
+                        <section class="health-topic">
+                            <h4>Integrated laboratory and life-support supplies:</h4>
+                            <p>Capacity to carry a fully integrated laboratory and all vital life-support supplies for the expedition.</p>
+                        </section>
+                        <section class="health-topic">
+                            <h4>Speed:</h4>
+                            <p>A cruising speed of 8 km/h and a top speed of 20 km/h.</p>
+                        </section>
+                        <section class="health-topic">
+                            <h4>Terrain capability:</h4>
+                            <p>The capability to traverse terrains where Martian geography is hostile.</p>
+                        </section>
+                        <section class="health-topic">
+                            <h4>Energy systems:</h4>
+                            <p>Powered by energy systems allowing 50 km trips via solar power, or a radioisotope thermoelectric generator (RTG) for much longer missions.</p>
+                        </section>
+                    </div>
+                </article>
+                <article id="mental-health" class="consideration-item">
+                    <h3>MENTAL HEALTH</h3>
+                    <p class="consideration-intro">Psychological well-being is essential to maintain adaptability, concentration, and the group functioning of the 4 crew members during the Mars exploration.</p>
+                    <div class="health-topics">
+                        <section class="health-topic">
+                            <h4>1. Pre-flight psychological evaluation:</h4>
+                            <p>An individual psychological evaluation must be carried out for each crew member, assessing adaptability, stress management, frustration tolerance, and coping skills. Social skills, communication, and conflict resolution will also be evaluated.</p>
+                        </section>
+                        <section class="health-topic">
+                            <h4>2. Daily well-being:</h4>
+                            <p>Rest schedules must be maintained and excessive work shifts avoided to prevent sleep disruptions, fatigue, and stress.</p>
+                        </section>
+                        <section class="health-topic">
+                            <h4>3. Psychological care:</h4>
+                            <p>It is necessary to maintain communication with professionals on Earth at regular intervals, conducting both individual and group monitoring, with brief daily evaluations regarding mood, stress levels, sleep quality, interpersonal friction, and attention, memory, and concentration. Action protocols must also be in place for situations involving intense stress or emotional difficulties.</p>
+                        </section>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.min.js" integrity="sha384-89aa4glufciPv46aKltztWQEmk+Tu9W2RhzXr6VcnUUEub7F8+06RcL2RYLCOHUq" crossorigin="anonymous"></script>
 </body>
 </html>

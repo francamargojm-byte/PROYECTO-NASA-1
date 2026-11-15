@@ -1,6 +1,6 @@
 # Simulación 3D de Marte
 
-Visor interactivo de Marte. La imagen de referencia se proyecta sobre una esfera 3D y el fondo de cuadritos se descarta durante la proyección.
+Visor interactivo de Marte. Las dos imágenes se armonizan a una tonalidad común y se proyectan sobre hemisferios opuestos de una esfera 3D; sus fondos se descartan durante la proyección.
 
 ## Cómo abrir
 

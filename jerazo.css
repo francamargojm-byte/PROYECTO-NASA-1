@@ -19,9 +19,17 @@
 html,
 body {
     width: 100%;
-    height: 100%;
     margin: 0;
-    overflow: hidden;
+    overflow-x: hidden;
+}
+
+html {
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100%;
 }
 
 button,
@@ -32,7 +40,7 @@ a {
 .experience {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     min-height: 480px;
     overflow: hidden;
     isolation: isolate;
@@ -291,6 +299,190 @@ h1 {
     background: rgba(255, 255, 255, 0.35);
 }
 
+.jezero-card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    width: min(1280px, calc(100vw - 32px), calc(100vh - 48px));
+    max-height: calc(100vh - 24px);
+    padding: 16px;
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 12px;
+    background: rgba(12, 16, 25, 0.9);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.38);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, calc(-50% + 12px));
+    transition: opacity 0.28s ease, transform 0.28s ease;
+    backdrop-filter: blur(16px);
+}
+
+.jezero-card.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%);
+}
+
+.jezero-card[hidden],
+.jezero-info[hidden] {
+    display: none;
+}
+
+.jezero-card-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.jezero-card-heading h2 {
+    position: relative;
+    margin: 5px 0 0;
+    font: 600 17px 'Manrope', sans-serif;
+    letter-spacing: -0.02em;
+    color: #fff;
+    text-shadow: 0 0 16px rgba(255, 118, 94, 0.3);
+}
+
+.jezero-card-heading h2::after {
+    display: block;
+    width: 30px;
+    height: 2px;
+    margin-top: 6px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--accent), rgba(255, 118, 94, 0.12));
+    content: '';
+}
+
+.card-close {
+    display: grid;
+    width: 28px;
+    height: 28px;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    background: transparent;
+    color: #d7dbe2;
+    font-size: 19px;
+    cursor: pointer;
+}
+
+.jezero-image {
+    display: block;
+    width: 100%;
+    max-height: calc(100vh - 160px);
+    border-radius: 7px;
+    object-fit: contain;
+}
+
+.info-toggle {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+    padding: 10px 0 2px;
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.13);
+    background: transparent;
+    color: #f4f3f1;
+    font: 500 11px 'DM Mono', monospace;
+    letter-spacing: 0.04em;
+    text-align: left;
+    cursor: pointer;
+}
+
+.info-toggle-icon {
+    color: var(--accent);
+    font-size: 19px;
+    transition: transform 0.2s ease;
+}
+
+.info-toggle[aria-expanded='true'] .info-toggle-icon {
+    transform: rotate(45deg);
+}
+
+.jezero-info {
+    padding-top: 8px;
+    color: #a7afbd;
+    font-size: 12px;
+}
+
+.jezero-info p {
+    margin: 0;
+}
+
+.route-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.route-button {
+    min-height: 34px;
+    padding: 7px 10px;
+    border: 1px solid rgba(255, 118, 94, 0.35);
+    border-radius: 6px;
+    background: rgba(255, 118, 94, 0.07);
+    color: #e8e4e1;
+    font: 9px 'DM Mono', monospace;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.route-button:hover {
+    border-color: var(--accent);
+    background: rgba(255, 118, 94, 0.16);
+}
+
+.route-dialog {
+    width: min(560px, calc(100vw - 32px));
+    max-height: calc(100vh - 32px);
+    padding: 18px;
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+    background: #0c1019;
+    color: #f4f3f1;
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.55);
+}
+
+.route-dialog::backdrop {
+    background: rgba(2, 3, 6, 0.78);
+    backdrop-filter: blur(4px);
+}
+
+.route-dialog-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.route-dialog-heading h2 {
+    margin: 0;
+    font: 600 17px 'Manrope', sans-serif;
+}
+
+.route-dialog-image {
+    display: block;
+    width: 100%;
+    max-height: min(52vh, 480px);
+    border-radius: 7px;
+    background: #080a0f;
+    object-fit: contain;
+}
+
+.route-dialog-info {
+    margin: 12px 0 0;
+    color: #a7afbd;
+    font-size: 12px;
+}
+
 .viewer-controls {
     position: absolute;
     right: 50%;
@@ -383,7 +575,10 @@ h1 {
 
 .icon-button:focus-visible,
 .text-button:focus-visible,
-.brand:focus-visible {
+.brand:focus-visible,
+.card-close:focus-visible,
+.info-toggle:focus-visible,
+.route-button:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 3px;
 }
@@ -418,6 +613,157 @@ h1 {
     color: #7e8797;
     font: 8px 'DM Mono', monospace;
     letter-spacing: 0.12em;
+}
+
+.considerations-menu {
+    position: absolute;
+    right: 5.2%;
+    bottom: 28px;
+    z-index: 3;
+}
+
+.considerations-toggle {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #9ca5b3;
+    font: 8px 'DM Mono', monospace;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.considerations-toggle:hover,
+.considerations-toggle[aria-expanded='true'] {
+    color: var(--accent);
+}
+
+.considerations-toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+.dropdown-chevron {
+    font: 12px 'DM Sans', sans-serif;
+    transition: transform 0.2s ease;
+}
+
+.considerations-toggle[aria-expanded='true'] .dropdown-chevron {
+    transform: rotate(180deg);
+}
+
+.considerations-menu .considerations-dropdown {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 10px);
+    left: auto;
+    display: grid;
+    min-width: 0;
+    width: 150px;
+    gap: 3px;
+    margin: 0;
+    padding: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 8px;
+    background: rgba(12, 16, 25, 0.96);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.36);
+    backdrop-filter: blur(14px);
+    list-style: none;
+}
+
+.considerations-menu .considerations-dropdown[hidden] {
+    display: none;
+}
+
+.considerations-menu .considerations-dropdown.show {
+    display: grid;
+}
+
+.considerations-menu .dropdown-item {
+    display: block;
+    padding: 8px 10px;
+    border-radius: 5px;
+    color: #cbd1db;
+    font: 9px 'DM Mono', monospace;
+    text-decoration: none;
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
+.considerations-menu .dropdown-item:hover,
+.considerations-menu .dropdown-item:focus-visible {
+    background: rgba(255, 118, 94, 0.12);
+    color: #fff;
+    outline: none;
+}
+
+.considerations {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    padding: 80px 5.2%;
+    background:
+        radial-gradient(ellipse at 82% 18%, rgba(255, 118, 94, 0.09), transparent 36%),
+        #080b12;
+}
+
+.considerations-content {
+    width: min(100%, 1280px);
+}
+
+.considerations-content h2 {
+    margin: 14px 0 34px;
+    color: #f4f3f1;
+    font: 600 clamp(28px, 5vw, 46px)/1.1 'Manrope', sans-serif;
+    letter-spacing: -0.045em;
+}
+
+.considerations-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.consideration-item {
+    padding: 28px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.consideration-item:first-child {
+    padding-top: 0;
+}
+
+.consideration-item h3 {
+    margin: 0 0 12px;
+    color: #f4f3f1;
+    font: 600 24px 'Manrope', sans-serif;
+}
+
+.consideration-intro,
+.health-topic p {
+    margin: 0;
+    color: #a7afbd;
+    font-size: 13px;
+    line-height: 1.75;
+}
+
+.health-topics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 48px;
+    margin-top: 24px;
+}
+
+.health-topic {
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.health-topic h4 {
+    margin: 0 0 8px;
+    color: #f0eeec;
+    font: 600 14px/1.5 'Manrope', sans-serif;
 }
 
 .footer-star {
@@ -529,6 +875,23 @@ h1 {
         width: 16px;
     }
 
+    .jezero-card {
+        width: calc(100vw - 24px);
+        max-height: calc(100vh - 24px);
+        padding: 12px;
+        transform: translate(-50%, calc(-50% + 12px));
+    }
+
+    .jezero-card.is-visible {
+        transform: translate(-50%, -50%);
+    }
+
+    .jezero-image {
+        max-height: calc(100vh - 180px);
+        object-fit: contain;
+        background: #080a0f;
+    }
+
     .viewer-controls {
         bottom: 52px;
     }
@@ -537,6 +900,28 @@ h1 {
         bottom: 20px;
         left: 22px;
         font-size: 7px;
+    }
+
+    .considerations-menu {
+        right: 22px;
+        bottom: 20px;
+    }
+
+    .considerations-toggle {
+        font-size: 7px;
+    }
+
+    .considerations-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .consideration-item {
+        padding: 22px 0;
+    }
+
+    .health-topics {
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
 }
 
