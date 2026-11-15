@@ -1,23 +1,89 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mapa Jerazo</title>
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@2.0.0-beta.4/dist/leaflet.css">
-  <link rel="stylesheet" href="jerazo.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080c16">
+    <title>Marte 3D | Exploración Jezero</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="jerazo.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+            }
+        }
+    </script>
+    <script type="module" src="jerazo.js"></script>
 </head>
 <body>
-  <div class="app">
-    <aside class="panel">
-      <h1>Mapa Jerazo</h1>
-      <p>Rutas interactivas cargadas desde un JSON.</p>
-      <div id="info-ruta"></div>
-    </aside>
-    <main id="map"></main>
-  </div>
+    <main class="experience">
+        <div id="scene-container" class="scene" aria-label="Globo 3D interactivo de Marte">
+            <div class="scene-vignette" aria-hidden="true"></div>
+            <div id="loading" class="loading" role="status">Preparando la simulación 3D...</div>
+        </div>
 
-  <script type="module" src="jerazo.js"></script>
+        <header class="topbar">
+            <a class="brand" href="#" aria-label="Marte 3D, inicio">
+                <span class="brand-mark" aria-hidden="true"><span></span></span>
+                <span class="brand-name">ORBITAL<span> / EXPLORACIÓN</span></span>
+            </a>
+            <div class="mission-status"><span class="status-dot"></span> MISIÓN ACTIVA</div>
+        </header>
+
+        <section class="mission-card" aria-labelledby="mission-title">
+            <p class="eyebrow"><span class="eyebrow-line"></span> PLANETA ROJO · 04</p>
+            <h1 id="mission-title">Marte<span class="title-period">.</span></h1>
+            <p class="mission-description">Un mundo de extremos. Explora el terreno marciano y descubre el lugar donde alguna vez fluyó agua.</p>
+
+            <div class="card-divider"></div>
+            <div class="location-heading">
+                <span class="location-icon" aria-hidden="true">⌖</span>
+                <div>
+                    <p class="eyebrow location-label">PUNTO DE INTERÉS</p>
+                    <h2>Cráter Jezero</h2>
+                </div>
+            </div>
+            <p class="location-description">Antiguo delta fluvial · Lugar de aterrizaje de Perseverance</p>
+
+            <div class="card-divider lower-divider"></div>
+            <div class="data-row">
+                <div><span class="data-value">18.4°</span><span class="data-label">LATITUD</span></div>
+                <span class="data-separator"></span>
+                <div><span class="data-value">77.7°</span><span class="data-label">LONGITUD</span></div>
+            </div>
+        </section>
+
+        <div class="coordinates" aria-hidden="true">
+            <span>HEMISFERIO NORTE</span>
+            <span class="coordinates-rule"></span>
+            <span>18.4° N &nbsp; 77.7° E</span>
+        </div>
+
+        <section class="viewer-controls" aria-label="Controles del globo">
+            <p class="controls-hint"><span class="mouse-icon" aria-hidden="true"></span> ARRASTRA PARA EXPLORAR</p>
+            <div class="control-bar">
+                <button id="zoom-out" class="icon-button" type="button" aria-label="Alejar" title="Alejar">
+                    <span aria-hidden="true">−</span>
+                </button>
+                <span class="control-divider"></span>
+                <button id="zoom-in" class="icon-button" type="button" aria-label="Acercar" title="Acercar">
+                    <span aria-hidden="true">+</span>
+                </button>
+                <span class="control-divider wide-divider"></span>
+                <button id="spin-toggle" class="text-button" type="button" aria-pressed="true">
+                    <span class="play-icon" aria-hidden="true"></span><span id="spin-label">PAUSAR GIRO</span>
+                </button>
+                <span class="control-divider wide-divider"></span>
+                <button id="reset-view" class="icon-button reset-button" type="button" aria-label="Restablecer vista" title="Restablecer vista">
+                    <span aria-hidden="true">↺</span>
+                </button>
+            </div>
+        </section>
+
+        <footer class="footer-note"><span class="footer-star" aria-hidden="true">✳</span> SIMULACIÓN INTERACTIVA <span class="footer-divider">·</span> TERRENO DE JEZERO</footer>
+        <div class="edge-glow" aria-hidden="true"></div>
+    </main>
 </body>
 </html>
